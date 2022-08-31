@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>User</h1>
+    <a th:href="@{/create}">Create Users</a>
     <p th:text="${message}"></p>
     <div th:if="${persons != null and !persons.empty}">
     <table border="1">

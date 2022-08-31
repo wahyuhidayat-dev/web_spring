@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="https:\\www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+</head>
+<body>
+    <h1>Data User</h1>
+    <a th:href="@{/}">Back Home</a>
+    <br>
+    <br>
+    <form th:action="@{/save}" method="post" th:object="${persons}">
+        <label for="FirstName">First Name :</label>
+        <input type="text" name="firstname" th:field="*{firstname}"/>
+        <br>
+        <label for="LastName">Last Name :</label>
+        <input type="text" name="lastname" th:field="*{lastname}"/>
+        <br>
+        <label for="Email">Email :</label>
+        <input type="text" name="email" th:field="*{email}"/>
+        <br>
+        <label for="Phone">Phone :</label>
+        <input type="text" name="phone" th:field="*{phone}"/>
+        <br>
+        <input type="submit" name="save" value="Save"/>
+    </form>
+</body>
+</html>
