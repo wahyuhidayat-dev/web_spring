@@ -12,14 +12,18 @@
     <br>
     <br>
     <form th:action="@{/save}" method="post" th:object="${persons}">
+        <input type="hidden" name="id" th:field="*{id}"/>
         <label for="FirstName">First Name :</label>
         <input type="text" name="firstname" th:field="*{firstname}"/>
+        <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Check FirstName</span>
         <br>
         <label for="LastName">Last Name :</label>
         <input type="text" name="lastname" th:field="*{lastname}"/>
+        <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Check LastName</span>
         <br>
         <label for="Email">Email :</label>
-        <input type="text" name="email" th:field="*{email}"/>
+        <input type="email" name="email" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Check Email</span>
         <br>
         <label for="Phone">Phone :</label>
         <input type="text" name="phone" th:field="*{phone}"/>
