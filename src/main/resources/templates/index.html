@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="https:\\www.thymeleaf.org" lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html xmlns="https:\\www.thymeleaf.org" 
+xmlns:sec="https:\\www.thymeleaf.org/extras/spring-security"
+lang="en">
+  <!-- <head> -->
+    <head th:replace ="layout/template :: head"></head>
+    <!-- <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
+    
+    <title>Home</title> -->
+  <!-- </head> -->
   <body>
-    <h1>User</h1>
-    <a th:href="@{/create}">Create Users</a>
+    <header th:replace ="layout/template :: header"></header>
+    <a role="button" class="btn btn-dark mx-5 mb-3" th:href="@{/create}">Create Users</a>
     <p th:text="${message}"></p>
     <div th:if="${persons != null and !persons.empty}">
-      <table border="1">
+      <table class="table table-striped">
         <tr>
           <th>First name</th>
           <th>Last name</th>
@@ -25,11 +29,13 @@
           <td th:text="${persons.lastname}"></td>
           <td th:text="${persons.email}"></td>
           <td th:text="${persons.phone}"></td>
-          <td><a th:href="@{/edit/}+${persons.id}" th:text="Edit"></a></td>
-          <td><a th:href="@{/delete(id=${persons.id})}" th:text="Delete"></a></td>
+          <td><a role="button" class="btn btn-warning col-6" th:href="@{/edit/}+${persons.id}" th:text="Edit"></a></td>
+          <td><a role="button" class="btn btn-danger" th:href="@{/delete(id=${persons.id})}" th:text="Delete"></a></td>
         </tr>
       </table>
     </div>
     <div th:if="${persons == null and persons.empty}">Data kosong</div>
   </body>
+  <footer th:replace ="layout/template :: footer"></footer>
+  
 </html>

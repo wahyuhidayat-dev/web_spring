@@ -1,34 +1,81 @@
 <!DOCTYPE html>
 <html xmlns="https:\\www.thymeleaf.org" lang="en">
-<head>
+  <head th:replace="layout/template :: head"></head>
+
+  <!-- <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
-</head>
-<body>
-    <h1>Data User</h1>
-    <a th:href="@{/}">Back Home</a>
-    <br>
-    <br>
+</head> -->
+  <body>
+    <header th:replace="layout/template :: header"></header>
+    <p class="h3 text-center">Input User</p>
+    <a role="button" class="btn btn-dark mx-5 mb-3"  th:href="@{/}">Back Home</a>
     <form th:action="@{/save}" method="post" th:object="${persons}">
-        <input type="hidden" name="id" th:field="*{id}"/>
-        <label for="FirstName">First Name :</label>
-        <input type="text" name="firstname" th:field="*{firstname}"/>
-        <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Check FirstName</span>
-        <br>
-        <label for="LastName">Last Name :</label>
-        <input type="text" name="lastname" th:field="*{lastname}"/>
-        <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Check LastName</span>
-        <br>
-        <label for="Email">Email :</label>
-        <input type="email" name="email" th:field="*{email}"/>
-        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Check Email</span>
-        <br>
-        <label for="Phone">Phone :</label>
-        <input type="text" name="phone" th:field="*{phone}"/>
-        <br>
-        <input type="submit" name="save" value="Save"/>
+      <input type="hidden" name="id" th:field="*{id}" />
+
+      <div class="form-group col-md-6 mb-3 mx-5">
+        <label for="firstname">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          placeholder="First Name"
+          name="firstname"
+          th:field="*{firstname}"
+        />
+        <small style="color: red;" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"
+          ></small
+        >
+      </div>
+
+      <div class="form-group col-md-6 mb-3 mx-5">
+        <label for="lastname">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          placeholder="Last Name"
+          name="lastname"
+          th:field="*{lastname}"
+        />
+        <small style="color: red;" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+          ></small
+        >
+      </div>
+
+      <div class="form-group col-md-6 mb-3 mx-5">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+          name="email"
+          th:field="*{email}"
+        />
+        <small style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+          ></small
+        >
+      </div>
+
+      <div class="form-group col-md-6 mb-3 mx-5">
+        <label for="phone">Phone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          placeholder="phone"
+          name="phone"
+          th:field="*{phone}"
+        />
+        <small style="color: red;" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+          ></small
+        >
+      </div>
+      <button class="btn btn-primary mx-5 mb-3" type="submit" value="save">Submit</button>
     </form>
-</body>
+  </body>
+  <footer th:replace="layout/template :: footer"></footer>
 </html>
